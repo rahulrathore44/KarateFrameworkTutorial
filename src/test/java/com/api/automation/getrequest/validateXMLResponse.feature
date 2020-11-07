@@ -4,7 +4,7 @@ Feature: To validate the GET End point
   Background: Setup the base url
     Given url 'http://localhost:9898'
 
-  Scenario: To get the data in JSON format
+  Scenario: To get the data in XML format
     Given path '/normal/webapi/all'
     And header Accept = 'application/xml'
     When method get
