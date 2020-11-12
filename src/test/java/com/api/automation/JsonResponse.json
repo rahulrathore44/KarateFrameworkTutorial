@@ -1,0 +1,22 @@
+[
+	{
+		"jobId": 1,
+		"jobTitle": "Software Engg",
+		"project": [
+			{
+				"technology": [
+					"Kotlin",
+					"SQL Lite",
+					"Gradle"
+				],
+				"projectName": "Movie App"
+			}
+		],
+		"jobDescription": "To develop andriod application",
+		"experience": [
+			"Google",
+			"Apple",
+			"Mobile Iron"
+		]
+	}
+]
