@@ -30,3 +30,23 @@ Feature: To create the Job entry in the application
     And status 201
     And print response
     And match response/Job/jobId == "7"
+
+  Scenario: To create the Job Entry in JSON format
+    Given path '/normal/webapi/add'
+    * def body = read("data/jobEntry.json")
+    And request body
+    And headers {Accept : 'application/json', Content-Type: 'application/json'}
+    When method post
+    And status 201
+    And print response
+    And match response.jobTitle == "Software Engg - 2"
+
+  Scenario: To create the Job Entry using XML request body formt
+    Given path '/normal/webapi/add'
+    * def body = read("data/jobEntry.xml")
+    And request body
+    And headers {Accept : 'application/json', Content-Type: 'application/xml'}
+    When method post
+    And status 201
+    And print response
+    And match response.jobId == 7
