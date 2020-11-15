@@ -21,3 +21,15 @@ Feature: Validate the JSON schema
       "project": '#[] #object'
       }
       """
+
+  Scenario: Schema Validation for GET end point
+    Given path '/normal/webapi/all'
+    And header Accept = 'application/json'
+    When method get # Send the get request
+    Then status 200 # the status code response should be 200
+    * def projectSchema = { "projectName": '#string',"technology": '#[] #string' }
+    * def mainSchema = {"jobId": '#number',"jobTitle": '#string',"jobDescription": '#string',"experience": '#[] #string',"project": '#[] ##(projectSchema)'}
+    And match response ==
+      """
+      '#[] ##(mainSchema)'
+      """
