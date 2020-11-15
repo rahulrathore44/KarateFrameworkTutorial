@@ -8,7 +8,7 @@ Feature: Validate the JSON schema
     Given path '/normal/webapi/add'
     * def body = read("data/jobEntry.json")
     And request body
-    And headers {Accept : 'application/xml', Content-Type: 'application/json'}
+    And headers {Accept : 'application/json', Content-Type: 'application/json'}
     When method post
     And status 201
     And match response ==
