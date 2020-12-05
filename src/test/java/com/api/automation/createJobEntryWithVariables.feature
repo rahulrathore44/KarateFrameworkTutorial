@@ -12,3 +12,5 @@ Feature: To create the Job entry in the test application
     When method post
     And status 201
     * def responseJobId = response.jobId
+    * def responseJobTitle = response.jobTitle
+    
