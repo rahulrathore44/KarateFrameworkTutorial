@@ -65,8 +65,40 @@
 					</includes> </configuration> <configuration> <includes> <include>**/ParallelRunnerWithTags.java</include> 
 					</includes> <systemProperties> <location>com/api/automation</location> <tags>@Regression</tags> 
 					</systemProperties> <rerunFailingTestsCount>2</rerunFailingTestsCount> </configuration> -->
+					<configuration>
+						<includes>
+							<include>**/ParallelBuilderWithCucumberReport.java</include>
+						</includes>
+						<rerunFailingTestsCount>2</rerunFailingTestsCount>
+						<systemProperties>
+							<karate.env>${karate.profile}</karate.env>
+						</systemProperties>
+					</configuration>
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>staging</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<karate.profile>staging</karate.profile>
+			</properties>
+		</profile>
+		<profile>
+			<id>preprod</id>
+			<properties>
+				<karate.profile>preprod</karate.profile>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<karate.profile>prod</karate.profile>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>
