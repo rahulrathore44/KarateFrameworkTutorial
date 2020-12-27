@@ -24,7 +24,8 @@ function fn() {
 	  // Initialize the config for staging
 	  config.username = 'stagingadmin1';
 	  config.password = 'stagingwelcome';
-	  config._url= 'http://staging.localhost:9898';
+	  //config._url= 'http://staging.localhost:9898';
+	  config._url= 'http://localhost:9898';
   } else if (env == 'preprod') {
 	  // Initialize the config for preprod
 	  config.username = 'preprodadmin1';
