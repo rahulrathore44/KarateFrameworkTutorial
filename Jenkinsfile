@@ -1,10 +1,8 @@
 pipeline{
     agent any
     
-    parameters {
-    	choice(name: 'Environment', choices: ['staging', 'preprod', 'prod'], description: '')
-	}
-    
+      parameters { choice(name: 'Environment', choices: ['staging', 'preprod', 'prod'], description: 'Profile needs to be used while executing test') }
+      
     stages{
         stage ('Clean WorkSpace Directory'){
             steps {
@@ -44,7 +42,7 @@ pipeline{
             steps {
                  //define the single or multiple step
                 bat 'echo Test Execution Started'
-                bat 'mvn -P "${params.Environment}" test'
+                bat 'mvn -P %Environment% test'
             }
         }
     }
