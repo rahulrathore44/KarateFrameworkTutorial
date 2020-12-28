@@ -1,6 +1,10 @@
 pipeline{
     agent any
     
+    parameters {
+    	choice(name: 'Environment', choices: ['staging', 'preprod', 'prod'], description: '')
+	}
+    
     stages{
         stage ('Clean WorkSpace Directory'){
             steps {
@@ -40,7 +44,7 @@ pipeline{
             steps {
                  //define the single or multiple step
                 bat 'echo Test Execution Started'
-                bat 'mvn test'
+                bat 'mvn -P ${params.Environment} test'
             }
         }
     }
