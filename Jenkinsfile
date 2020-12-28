@@ -44,7 +44,7 @@ pipeline{
             steps {
                  //define the single or multiple step
                 bat 'echo Test Execution Started'
-                bat 'mvn -P ${params.Environment} test'
+                bat 'mvn -P "${params.Environment}" test'
             }
         }
     }
