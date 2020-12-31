@@ -1,10 +1,10 @@
 # Karate Framework Tutorial
 
-API testing using Karate Framework
+Framework for testing RESTful Services with Karate Framework 
 
 ## Course Link (Discount Coupon)
 
-https://www.udemy.com/user/rahulrathore3/
+https://www.udemy.com/course/rest-api-testing-with-karate-framework/?referralCode=FA82F2FFB385574703E4
 
 ## YouTube Playlist
 
