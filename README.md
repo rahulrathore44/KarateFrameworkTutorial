@@ -1,5 +1,7 @@
 # Karate Framework Tutorial
 
+![](Karate-Framework.JPG)
+
 Framework for testing RESTful Services with Karate Framework 
 
 ## Course Link (Discount Coupon)
