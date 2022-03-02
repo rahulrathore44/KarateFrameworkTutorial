@@ -73,7 +73,7 @@ public class CustomExtentReport {
 				// execution status
 				scenarioResult.getStepResults().forEach((step) -> {
 					// Adding the Scenario Step with Scenario node
-					addScenarioStep(scenarioNode, step.getStep(), step.getResult());
+					addScenarioStep(scenarioNode, step.getStep(), step.getResult(), step.getStepLog());
 				});
 			});
 			// 9. Use all the info to generate the extent report.
@@ -124,7 +124,7 @@ public class CustomExtentReport {
 
 	}
 
-	private void addScenarioStep(ExtentTest scenarioNode, Step step, Result stepResult) {
+	private void addScenarioStep(ExtentTest scenarioNode, Step step, Result stepResult, String stepLogs) {
 		String type = step.getPrefix(); // Given, When or Then
 		String stepTitle = step.getText();
 		String status = stepResult.getStatus();
@@ -133,30 +133,34 @@ public class CustomExtentReport {
 
 		switch (type) {
 		case "Given":
-			stepNode = scenarioNode.createNode(Given.class, stepTitle);
-			addStatus(stepNode, status, error);
+			stepNode = scenarioNode.createNode(Given.class, getStepTitle(type, stepTitle));
+			addStatus(stepNode, status, error, stepLogs);
 			break;
 		case "When":
-			stepNode = scenarioNode.createNode(When.class, stepTitle);
-			addStatus(stepNode, status, error);
+			stepNode = scenarioNode.createNode(When.class, getStepTitle(type, stepTitle));
+			addStatus(stepNode, status, error, stepLogs);
 			break;
 		case "Then":
-			stepNode = scenarioNode.createNode(Then.class, stepTitle);
-			addStatus(stepNode, status, error);
+			stepNode = scenarioNode.createNode(Then.class, getStepTitle(type, stepTitle));
+			addStatus(stepNode, status, error, stepLogs);
 			break;
 		case "And":
-			stepNode = scenarioNode.createNode(And.class, stepTitle);
-			addStatus(stepNode, status, error);
+			stepNode = scenarioNode.createNode(And.class, getStepTitle(type, stepTitle));
+			addStatus(stepNode, status, error, stepLogs);
 			break;
 
 		default:
-			stepNode = scenarioNode.createNode(type + " " + stepTitle);
-			addStatus(stepNode, status, error);
+			stepNode = scenarioNode.createNode(type + " " + getStepTitle(type, stepTitle));
+			addStatus(stepNode, status, error, stepLogs);
 			break;
 		}
 	}
 
-	private void addStatus(ExtentTest stepNode, String status, Throwable error) {
+	private String getStepTitle(String type, String stepText) {
+		return type.startsWith("*") ? stepText : type + " " + stepText;
+	}
+
+	private void addStatus(ExtentTest stepNode, String status, Throwable error, String stepLogs) {
 		switch (status) {
 		case "passed":
 			stepNode.pass("");
@@ -168,6 +172,8 @@ public class CustomExtentReport {
 			stepNode.skip("");
 			break;
 		}
+		if (stepLogs != null && !stepLogs.isEmpty())
+			stepNode.info(String.format("[print] %s", stepLogs));
 	}
 
 	private void setConfig() {

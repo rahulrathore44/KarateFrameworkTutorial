@@ -11,7 +11,7 @@ public class ParallelBuilder {
 	@Test
 	public void executeKarateTest() {
 		Builder aRunner = new Builder();
-		//aRunner.path("classpath:com/api/automation/getrequest");
+		//aRunner.path("classpath:com/api/he automation/getrequest");
 		aRunner.path("classpath:com/api/automation");
 		// aRunner.parallel(5);
 		Results result = aRunner.parallel(5);
