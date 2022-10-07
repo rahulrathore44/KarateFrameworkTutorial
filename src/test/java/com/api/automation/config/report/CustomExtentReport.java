@@ -1,6 +1,7 @@
 package com.api.automation.config.report;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -58,6 +59,9 @@ public class CustomExtentReport {
 			setConfig();
 			// 2. Using the testReults, Get the list of scenario results
 			List<ScenarioResult> scenarioResults = getScenarioResults();
+			scenarioResults = scenarioResults.stream().filter((name) -> {
+				return (name.getScenario().getName() != null) && !(name.getScenario().getName().isEmpty());
+			}).collect(Collectors.toList());
 			// 3. loop over list of scenario results
 			scenarioResults.forEach((scenarioResult) -> {
 				// 4. Using Scenario result, get the scenario object
