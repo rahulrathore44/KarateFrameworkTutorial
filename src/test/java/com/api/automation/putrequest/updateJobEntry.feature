@@ -56,7 +56,7 @@ Feature: To test the updation of Job entry in the test application
     Then status 200
     * def projectArray = karate.jsonPath(response, "$[?(@.jobId == " + id + ")].project")
     And print projectArray
-    And match projectArray[0] == '#[2]'
+    * assert projectArray[0].length == 3
 
   Scenario: To update the Job Entry for non-exiting job in JSON format
     # Create a new Job Entry
