@@ -47,8 +47,6 @@
 			<version>5.11.1</version>
 			<scope>test</scope>
 		</dependency>
-
-
 	</dependencies>
 
 	<build>
@@ -76,14 +74,20 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.2</version>
-				<!-- ************************ Running the parallel runner with and without 
+				<!-- ************************ Running the parallel runner with
+				and without 
 					system property ************************ -->
-				<!-- <configuration> <includes> <include>**/ParallelBuilder.java</include> 
-					</includes> </configuration> <configuration> <includes> <include>**/ParallelRunnerWithTags.java</include> 
-					</includes> <systemProperties> <location>com/api/automation</location> <tags>@Regression</tags> 
-					</systemProperties> <rerunFailingTestsCount>2</rerunFailingTestsCount> </configuration> -->
+				<!-- <configuration> <includes>
+				<include>**/ParallelBuilder.java</include> 
+					</includes> </configuration> <configuration> <includes>
+				<include>**/ParallelRunnerWithTags.java</include> 
+					</includes> <systemProperties> <location>com/api/automation</location>
+				<tags>@Regression</tags> 
+					</systemProperties> <rerunFailingTestsCount>2</rerunFailingTestsCount>
+				</configuration> -->
 
-				<!-- ************************ Running the parallel runner with Karate-Config.js 
+				<!-- ************************ Running the parallel runner with
+				Karate-Config.js 
 					************************ -->
 				<configuration>
 					<includes>
